@@ -117,6 +117,9 @@ const MallDetail = () => {
               </div>
             </div>
 
+            {/* Interior Gallery */}
+            <MallGallery mallId={mall.id} />
+
             {/* Contact */}
             <div className="bg-card rounded-lg border border-border p-6">
               <h2 className="font-display text-2xl text-foreground mb-4">Contact</h2>
