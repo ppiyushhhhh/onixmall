@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "./components/Navbar";
+import Chatbot from "./components/Chatbot";
 import Footer from "./components/Footer";
 import Index from "./pages/Index";
 import MallDirectory from "./pages/MallDirectory";
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
+        <Chatbot />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
