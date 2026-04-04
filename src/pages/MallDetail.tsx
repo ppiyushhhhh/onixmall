@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Phone, Mail, Star, Building2, Car, Calendar, Search, ChevronRight, Users, Layers, ArrowLeft } from 'lucide-react';
+import { MapPin, Clock, Phone, Mail, Star, Building2, Car, Calendar, Search, Users, Layers, ArrowLeft } from 'lucide-react';
+import MallGallery from '@/components/MallGallery';
 import { malls, generateStoresForMall, storeCategories, events } from '@/data/malls';
 import { mallHeroImages } from '@/components/MallHeroImages';
 
@@ -115,6 +116,9 @@ const MallDetail = () => {
                 ))}
               </div>
             </div>
+
+            {/* Interior Gallery */}
+            <MallGallery mallId={mall.id} />
 
             {/* Contact */}
             <div className="bg-card rounded-lg border border-border p-6">
