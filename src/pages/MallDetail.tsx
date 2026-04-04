@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MapPin, Clock, Phone, Mail, Star, Building2, Car, Calendar, Search, ChevronRight, Users, Layers, ArrowLeft } from 'lucide-react';
 import { malls, generateStoresForMall, storeCategories, events } from '@/data/malls';
+import { mallHeroImages } from '@/components/MallHeroImages';
 
 const MallDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -42,6 +43,9 @@ const MallDetail = () => {
     <div className="min-h-screen pt-20">
       {/* Hero */}
       <div className="relative h-64 md:h-80 bg-secondary overflow-hidden">
+        {mallHeroImages[mall.id] && (
+          <img src={mallHeroImages[mall.id]} alt={mall.name} className="absolute inset-0 w-full h-full object-cover" width={1920} height={768} />
+        )}
         <div className="absolute inset-0 bg-gradient-gold opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         <div className="absolute bottom-6 left-0 right-0">
