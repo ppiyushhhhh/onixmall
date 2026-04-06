@@ -35,6 +35,7 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen">
+      <AnnouncementBanner />
       {/* Hero Slider */}
       <section className="relative h-[85vh] overflow-hidden">
         <AnimatePresence mode="wait">
