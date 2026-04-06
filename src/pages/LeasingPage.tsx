@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Building2, MapPin, Layers, IndianRupee, ArrowRight, CheckCircle } from 'lucide-react';
+import { Layers, IndianRupee, ArrowRight, CheckCircle } from 'lucide-react';
 import { malls } from '@/data/malls';
 import { availableSpaces } from '@/data/leasingInquiries';
 import { toast } from 'sonner';
