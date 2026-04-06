@@ -14,6 +14,8 @@ import ComplaintsPage from "./pages/ComplaintsPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import TermsPage from "./pages/TermsPage";
 import LeasingPage from "./pages/LeasingPage";
+import AnnualReportsPage from "./pages/AnnualReportsPage";
+import CareersPage from "./pages/CareersPage";
 import AdminPanel from "./pages/AdminPanel";
 import NotFound from "./pages/NotFound";
 
@@ -35,6 +37,8 @@ const App = () => (
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/leasing" element={<LeasingPage />} />
+          <Route path="/annual-reports" element={<AnnualReportsPage />} />
+          <Route path="/careers" element={<CareersPage />} />
           <Route path="/admin" element={<AdminPanel />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
