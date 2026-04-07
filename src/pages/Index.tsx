@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Search, MapPin, Building2, Users, Award, Calendar, ArrowRight, Star } from 'lucide-react';
 import AnnouncementBanner from '@/components/AnnouncementBanner';
+import LoyaltyWidget from '@/components/LoyaltyWidget';
 import { malls, events } from '@/data/malls';
 import heroImg1 from '@/assets/hero-mall-1.jpg';
 import heroImg2 from '@/assets/hero-mall-2.jpg';
@@ -237,6 +238,9 @@ const HomePage = () => {
           ))}
         </div>
       </section>
+
+      {/* Loyalty Rewards */}
+      <LoyaltyWidget />
 
       {/* CTA Banner */}
       <section className="relative overflow-hidden">
