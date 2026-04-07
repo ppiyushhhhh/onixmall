@@ -15,6 +15,14 @@ const projects = [
   { title: 'Onix Mall Kochi', city: 'kochi', desc: 'Kerala\'s waterfront-inspired retail landmark in Marine Drive.', year: 2021, highlights: ['Waterfront Views', 'Spice Market', 'Backwater Lounge'] },
   { title: 'Onix Mall Chandigarh', city: 'chandigarh', desc: 'Le Corbusier-inspired modern design in the City Beautiful.', year: 2021, highlights: ['Modernist Design', 'Rooftop Garden', 'Smart HVAC'] },
   { title: 'Onix Mall Lucknow', city: 'lucknow', desc: 'Nawabi elegance meets modern retail on Hazratganj.', year: 2022, highlights: ['Mughal-Inspired Atrium', 'Food Street', 'Cultural Hub'] },
+  { title: 'Onix Mall Indore', city: 'indore', desc: 'Central India\'s largest retail destination on Vijay Nagar, blending local flavors with international brands.', year: 2022, highlights: ['Street Food Court', 'Open-Air Amphitheatre', 'Solar Canopy'] },
+  { title: 'Onix Mall Bhopal', city: 'bhopal', desc: 'Lake-city inspired design near Upper Lake with panoramic views and eco-friendly architecture.', year: 2022, highlights: ['Lake-View Terrace', 'Eco Architecture', 'Heritage Walk'] },
+  { title: 'Onix Mall Nagpur', city: 'nagpur', desc: 'The Orange City\'s premier retail hub at Dharampeth, connecting Vidarbha to global brands.', year: 2023, highlights: ['Central Atrium', 'Regional Craft Zone', 'Smart Escalators'] },
+  { title: 'Onix Mall Surat', city: 'surat', desc: 'Diamond City\'s dazzling retail gem on Athwa Gate with textile-heritage-inspired interiors.', year: 2023, highlights: ['Diamond Lounge', 'Textile Gallery', 'Night Shopping Zone'] },
+  { title: 'Onix Mall Bhubaneswar', city: 'bhubaneswar', desc: 'Odisha\'s temple-city retail landmark on Janpath featuring Kalinga architectural motifs.', year: 2023, highlights: ['Kalinga Design Elements', 'Tribal Art Gallery', 'Organic Food Court'] },
+  { title: 'Onix Mall Patna', city: 'patna', desc: 'Bihar\'s first world-class mall on Bailey Road, bringing modern retail to Eastern India.', year: 2024, highlights: ['Ganga-View Lounge', 'Regional Brands Wing', 'Community Hall'] },
+  { title: 'Onix Mall Coimbatore', city: 'coimbatore', desc: 'The Manchester of South India gets a premium retail destination on Avinashi Road.', year: 2024, highlights: ['Industrial-Chic Design', 'Wellness Zone', 'Textile Showcase'] },
+  { title: 'Onix Mall Visakhapatnam', city: 'visakhapatnam', desc: 'Coastal Andhra\'s beach-inspired retail paradise on Beach Road with ocean-view dining.', year: 2024, highlights: ['Ocean-View Deck', 'Seafood Boulevard', 'Surf-Themed Kids Zone'] },
 ];
 
 const PortfolioPage = () => {
