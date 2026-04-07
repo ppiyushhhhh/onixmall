@@ -1,13 +1,20 @@
 import { motion } from 'framer-motion';
-import { Building2, Award, Palette, Camera, Sparkles } from 'lucide-react';
+import { Building2, Palette, Camera, Sparkles } from 'lucide-react';
+import { mallHeroImages } from '@/components/MallHeroImages';
 
 const projects = [
-  { title: 'Onix Mall Mumbai', desc: 'Our flagship 8.5 lakh sq ft development in the financial capital, featuring 5 levels of premium retail and entertainment.', year: 2018, highlights: ['LEED Gold Certified', 'Smart Parking System', 'Rooftop Event Space'] },
-  { title: 'Onix Mall Delhi', desc: 'A 9.2 lakh sq ft architectural marvel in Saket, integrating traditional design elements with modern retail innovation.', year: 2017, highlights: ['6-Level Design', 'Heritage-Inspired Architecture', 'Largest Food Court in NCR'] },
-  { title: 'Onix Mall Bengaluru', desc: 'Tech-forward retail destination with smart building management and IoT-enabled visitor experiences.', year: 2019, highlights: ['IoT Integration', 'Co-working Spaces', 'EV Charging Stations'] },
-  { title: 'Onix Mall Hyderabad', desc: 'Nawabi grandeur meets contemporary design in HITEC City, blending Hyderabadi culture with global retail standards.', year: 2019, highlights: ['Cultural Gallery', 'Indoor Water Feature', 'Biophilic Design'] },
-  { title: 'Onix Mall Kolkata', desc: 'Art-centric retail space in Salt Lake featuring rotating exhibitions and cultural programming alongside premium shopping.', year: 2019, highlights: ['Art Gallery Wing', 'Auditorium', 'Green Building Certification'] },
-  { title: 'Onix Mall Ahmedabad', desc: 'Gujarat\'s retail beacon on SG Highway with vibrant textile-inspired interiors.', year: 2020, highlights: ['Textile-Inspired Interiors', 'Solar Powered', 'Rainwater Harvesting'] },
+  { title: 'Onix Mall Mumbai', city: 'mumbai', desc: 'Our flagship 8.5 lakh sq ft development in the financial capital, featuring 5 levels of premium retail and entertainment.', year: 2018, highlights: ['LEED Gold Certified', 'Smart Parking System', 'Rooftop Event Space'] },
+  { title: 'Onix Mall Delhi', city: 'delhi', desc: 'A 9.2 lakh sq ft architectural marvel in Saket, integrating traditional design elements with modern retail innovation.', year: 2017, highlights: ['6-Level Design', 'Heritage-Inspired Architecture', 'Largest Food Court in NCR'] },
+  { title: 'Onix Mall Bengaluru', city: 'bengaluru', desc: 'Tech-forward retail destination with smart building management and IoT-enabled visitor experiences.', year: 2019, highlights: ['IoT Integration', 'Co-working Spaces', 'EV Charging Stations'] },
+  { title: 'Onix Mall Hyderabad', city: 'hyderabad', desc: 'Nawabi grandeur meets contemporary design in HITEC City, blending Hyderabadi culture with global retail standards.', year: 2019, highlights: ['Cultural Gallery', 'Indoor Water Feature', 'Biophilic Design'] },
+  { title: 'Onix Mall Kolkata', city: 'kolkata', desc: 'Art-centric retail space in Salt Lake featuring rotating exhibitions and cultural programming alongside premium shopping.', year: 2019, highlights: ['Art Gallery Wing', 'Auditorium', 'Green Building Certification'] },
+  { title: 'Onix Mall Ahmedabad', city: 'ahmedabad', desc: 'Gujarat\'s retail beacon on SG Highway with vibrant textile-inspired interiors.', year: 2020, highlights: ['Textile-Inspired Interiors', 'Solar Powered', 'Rainwater Harvesting'] },
+  { title: 'Onix Mall Chennai', city: 'chennai', desc: 'South India\'s premier shopping destination on Anna Salai with world-class amenities.', year: 2020, highlights: ['Multiplex Cinema', 'Kids Zone', 'Green Terrace'] },
+  { title: 'Onix Mall Pune', city: 'pune', desc: 'A modern retail hub on FC Road catering to Pune\'s vibrant young demographic.', year: 2020, highlights: ['Youth-Centric Design', 'Gaming Arena', 'Open-Air Plaza'] },
+  { title: 'Onix Mall Jaipur', city: 'jaipur', desc: 'Rajasthani heritage blended with luxury retail on MI Road.', year: 2021, highlights: ['Heritage Facade', 'Luxury Wing', 'Craft Bazaar'] },
+  { title: 'Onix Mall Kochi', city: 'kochi', desc: 'Kerala\'s waterfront-inspired retail landmark in Marine Drive.', year: 2021, highlights: ['Waterfront Views', 'Spice Market', 'Backwater Lounge'] },
+  { title: 'Onix Mall Chandigarh', city: 'chandigarh', desc: 'Le Corbusier-inspired modern design in the City Beautiful.', year: 2021, highlights: ['Modernist Design', 'Rooftop Garden', 'Smart HVAC'] },
+  { title: 'Onix Mall Lucknow', city: 'lucknow', desc: 'Nawabi elegance meets modern retail on Hazratganj.', year: 2022, highlights: ['Mughal-Inspired Atrium', 'Food Street', 'Cultural Hub'] },
 ];
 
 const PortfolioPage = () => {
@@ -42,11 +49,15 @@ const PortfolioPage = () => {
           {projects.map((project, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
               className="bg-card rounded-lg border border-border overflow-hidden hover:border-primary/30 transition-all group">
-              <div className="h-40 bg-secondary relative">
-                <div className="absolute inset-0 bg-gradient-gold opacity-5 group-hover:opacity-15 transition-opacity" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Building2 size={40} className="text-primary/30" />
-                </div>
+              <div className="h-48 bg-secondary relative overflow-hidden">
+                {mallHeroImages[project.city] ? (
+                  <img src={mallHeroImages[project.city]} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Building2 size={40} className="text-primary/30" />
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
                 <div className="absolute top-3 left-3 bg-background/80 backdrop-blur-sm rounded-full px-2.5 py-0.5 text-xs text-primary font-medium">
                   Est. {project.year}
                 </div>
