@@ -1,156 +1,164 @@
-# Onix Mall India – Full Stack Web Application
+# 🚀 Onix Mall India – Full Stack Application & DevOps Monitoring
 
-Onix Mall India is a full-stack web application designed to simulate a real-world mall ecosystem. The platform includes customer-facing features, administrative views, and a scalable architecture suitable for cloud deployment.
+## 👤 Author
 
----
-
-## Overview
-
-This project started as a frontend-only application using static dummy data and has been upgraded to a full-stack system. The application now fetches data from a backend API, making it dynamic and ready for future database integration.
+**Piyush Prasad**
+IT Office Assistant | Aspiring Cloud & DevOps Engineer
 
 ---
 
-## Technology Stack
+## 🏗️ Project Overview
 
-Frontend  
-React.js (Vite) with TypeScript  
-Tailwind CSS  
-
-Backend  
-Node.js  
-Express.js  
-
-Database (Planned)  
-MongoDB  
+Onix Mall India is a **full-stack web application** simulating a real-world mall ecosystem, combined with a **production-grade monitoring and security setup** deployed on AWS EC2.
 
 ---
 
-## Architecture
+## ⚙️ Tech Stack
 
-Frontend (React) → API (Node/Express) → Database (MongoDB - planned)
+### 🎨 Frontend
 
-The frontend communicates with the backend using REST APIs. The backend currently serves structured data and can be extended to connect with a database.
+* React.js (Vite) + TypeScript
+* Tailwind CSS
+
+### ⚙️ Backend
+
+* Node.js
+* Express.js
+
+### 🗄️ Database (Planned)
+
+* MongoDB
+
+### ☁️ DevOps & Infra
+
+* AWS EC2 (Ubuntu)
+* Nginx (Reverse Proxy)
+* PM2
+
+### 📊 Monitoring
+
+* Prometheus
+* Node Exporter
+* Grafana
 
 ---
 
-## Project Structure
+## 🏗️ Architecture
+
+Frontend → Backend API → Database (Planned)
+
+Monitoring Flow:
+Node Exporter → Prometheus → Grafana → User (HTTPS)
+
+---
+
+## 📂 Project Structure
 
 onixmall/
-│
 ├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── data/ (legacy dummy data)
-│   ├── hooks/
-│   └── App.tsx
-│
-backend/
-├── server.js
-├── package.json
+├── backend/
+│   ├── server.js
+│   └── package.json
 
 ---
 
-## Features
+## 🔗 API Endpoint
 
-- Mall directory with API-based data
-- Mall detail pages
-- Admin panel (UI level)
-- Leasing and careers modules (static)
-- Modular and scalable structure
-- Ready for cloud deployment
+GET /api/malls
 
----
-
-## Setup Instructions
-
-### 1. Clone Repository
-
-git clone https://github.com/your-username/onixmall.git  
-cd onixmall  
-
----
-
-### 2. Frontend Setup
-
-npm install  
-npm run dev  
-
-Frontend runs on:  
-http://localhost:5173  
-
----
-
-### 3. Backend Setup
-
-cd /home/ubuntu/backend  
-npm install  
-
-node server.js  
-
-Backend API:  
-http://<your-server-ip>:5000/api/malls  
-
----
-
-## API Endpoint
-
-GET /api/malls  
-
-Example Response:
-
+Example:
 [
-  {
-    "id": "1",
-    "name": "Onix Mall Mumbai",
-    "city": "Mumbai"
-  }
+{
+"id": "1",
+"name": "Onix Mall Mumbai",
+"city": "Mumbai"
+}
 ]
 
 ---
 
-## Important Notes
+## 🚀 Setup
 
-- Static data from `src/data/malls.ts` has been replaced with API calls  
-- Backend must be running before frontend can fetch data  
-- Ensure port 5000 is open if using a cloud server  
+### Clone Repo
 
----
+git clone https://github.com/your-username/onixmall.git
+cd onixmall
 
-## Deployment
+### Frontend
 
-Frontend can be deployed on:
-- AWS EC2
-- AWS S3
-- Cloudflare Pages
+npm install
+npm run dev
 
-Backend should be run using PM2:
+### Backend
 
-npm install -g pm2  
-pm2 start server.js  
-pm2 save  
-pm2 startup  
+cd backend
+npm install
+node server.js
 
 ---
 
-## Future Improvements
+## 🌐 Live Monitoring (Grafana)
 
-- MongoDB integration
-- Authentication system
-- Admin panel with full control
-- Leasing workflow automation
-- Analytics dashboard
-- Domain and HTTPS setup
+🔐 Protected with authentication & HTTPS
 
----
+👉 Main URL:
+https://grafana.onixmall.run.place/
 
-## Author
-
-Piyush Prasad  
-IT Office Assistant  
-Learning Cloud and DevOps  
+👉 Dashboard:
+https://grafana.onixmall.run.place/d/rYdddlPWk/node-exporter-full
 
 ---
 
-## License
+## 🔐 Security
 
-This project is for learning and demonstration purposes.
+* HTTPS (SSL via Certbot)
+* Nginx Reverse Proxy
+* Basic Authentication
+* Firewall (UFW)
+
+---
+
+## 📊 Features
+
+* Full-stack mall directory
+* API-based data fetching
+* Admin UI (frontend level)
+* Real-time server monitoring
+* Secure dashboard access
+
+---
+
+## 📈 Monitoring
+
+* CPU, RAM, Disk usage
+* Network traffic
+* System uptime
+* Server health
+
+---
+
+## 🧠 Key Learnings
+
+* Full Stack Development
+* AWS Deployment
+* Monitoring with Prometheus & Grafana
+* Nginx Reverse Proxy
+* Server Security
+
+---
+
+## 🔮 Future Improvements
+
+* MongoDB integration
+* JWT Authentication
+* Payment Gateway
+* Alerting System
+* Docker & Kubernetes
+
+---
+
+## 🏁 Conclusion
+
+This project demonstrates **real-world Full Stack + DevOps skills**, including deployment, monitoring, and security in a cloud environment.
+
+---
