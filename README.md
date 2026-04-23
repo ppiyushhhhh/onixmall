@@ -1,190 +1,179 @@
-# 🛒 Onix Mall India – Full Stack Application with DevOps, Monitoring & CI/CD
+# 🛒 Onix Mall India
 
-👤 **Author:** Piyush Prasad  
-🎯 Aspiring Cloud & DevOps Engineer  
+🚀 Full Stack Application with DevOps, Monitoring & CI/CD  
+
+👤 **Piyush Prasad**  
+Aspiring Cloud & DevOps Engineer  
 
 ---
 
-## 🚀 Project Overview
+## 📌 Project Overview
 
-Onix Mall India is a full-stack web application simulating a real-world mall ecosystem, combined with a **production-grade DevOps setup** including CI/CD, monitoring, and security on AWS.
+Onix Mall India is a full-stack web application that simulates a real-world mall system, combined with a **production-ready DevOps setup**.
+
+This project demonstrates how modern applications are:
+
+- Built (Frontend + Backend)
+- Deployed (AWS EC2)
+- Automated (CI/CD)
+- Monitored (Prometheus + Grafana)
+- Secured (HTTPS + Authentication)
 
 ---
 
 ## 🏗️ Architecture
 
-### 🔹 Application Flow
+### Application Flow
 
-
-Frontend (React)
-↓
-Backend API (Node.js)
-↓
-Database (MongoDB - Planned)
-
+Frontend (React)  
+↓  
+Backend API (Node.js)  
+↓  
+Database (MongoDB – Planned)  
 
 ---
 
-### 🔹 CI/CD Pipeline
+### CI/CD Flow
 
-
-GitHub
-↓
-GitHub Actions
-↓
-Ansible Server (EC2)
-↓
-Onixmall Server (EC2)
-↓
-Nginx → Serves React App
-
+GitHub  
+↓  
+GitHub Actions  
+↓  
+Ansible Server (EC2)  
+↓  
+Application Server (EC2)  
+↓  
+Nginx  
 
 ---
 
-### 🔹 Monitoring Flow
+### Monitoring Flow
 
-
-Node Exporter
-↓
-Prometheus
-↓
-Grafana
-↓
-User Dashboard (HTTPS)
-
+Node Exporter  
+↓  
+Prometheus  
+↓  
+Grafana  
+↓  
+Secure Dashboard  
 
 ---
 
 ## ⚙️ Tech Stack
 
-### 🎨 Frontend
-- React.js (Vite)
+**Frontend**
+- React (Vite)
 - TypeScript
 - Tailwind CSS
 
-### ⚙️ Backend
+**Backend**
 - Node.js
 - Express.js
 
-### 🗄️ Database (Planned)
-- MongoDB
-
-### ☁️ DevOps & Infrastructure
+**DevOps & Infrastructure**
 - AWS EC2 (Ubuntu)
 - Nginx (Reverse Proxy)
 - PM2
 - GitHub Actions
 - Ansible
 
-### 📊 Monitoring
+**Monitoring**
 - Prometheus
 - Node Exporter
 - Grafana
 
 ---
 
-## 📂 Project Structure
+## 🚀 CI/CD Pipelines
 
+### 🔹 Main Pipeline (Automated)
 
-onixmall/
-├── src/
-├── backend/
-│ ├── server.js
-│ └── package.json
-├── .github/workflows/
-
+- Trigger: Push to `main`
+- GitHub Actions → Ansible → EC2 deployment
+- Fully automated deployment system
 
 ---
 
-## 🔗 API Endpoint
+### 🔹 Backup Pipeline (Manual)
 
+- Trigger: Manual (`workflow_dispatch`)
+- Direct deployment from GitHub to EC2
+- Used as fallback
 
-GET /api/malls
+---
 
+## 🔐 Security
 
-### Example Response
+- HTTPS (SSL via Certbot)
+- Nginx Reverse Proxy
+- Basic Authentication
+- UFW Firewall
+- SSH Key Authentication
 
-```json
-[
-  {
-    "id": "1",
-    "name": "Onix Mall Mumbai",
-    "city": "Mumbai"
-  }
-]
-🚀 Setup
-Clone Repository
-git clone https://github.com/piyushhhhh/onixmall.git
-cd onixmall
-Frontend
-npm install
-npm run dev
-Backend
-cd backend
-npm install
-node server.js
-⚙️ CI/CD Pipelines
-🔹 Main Pipeline (Ansible Based)
-Trigger: Push to main
-Uses GitHub Actions + Ansible
-SSH → Ansible Server → Deploy to EC2
-🔹 Backup Pipeline (Direct EC2)
-Trigger: Manual (workflow_dispatch)
-Direct SSH deployment from GitHub to EC2
-Used as fallback deployment
-🔐 Security
-HTTPS (SSL via Certbot)
-Nginx Reverse Proxy
-Basic Authentication
-UFW Firewall configuration
-SSH Key-based Authentication
-📊 Monitoring & Observability
+---
 
-🔐 Protected with authentication & HTTPS
+## 📊 Monitoring & Observability
 
-👉 Main URL:
-https://grafana.onixmall.run.place/
+🔐 Protected with authentication & HTTPS  
 
-👉 Dashboard (Node Exporter Full):
-https://grafana.onixmall.run.place/d/rYdddlPWk/node-exporter-full
+**Grafana Dashboard:**  
+👉 https://grafana.onixmall.run.place/  
 
-⚠️ Access is restricted via authentication for security purposes.
+**Node Exporter Dashboard:**  
+👉 https://grafana.onixmall.run.place/d/rYdddlPWk/node-exporter-full  
 
-📈 Metrics Monitored
-CPU Usage
-Memory Usage
-Disk Usage
-Network Traffic
-Server Uptime
-System Health
-🔄 Monitoring Flow
-Node Exporter → Prometheus → Grafana → Secure Dashboard
-🧠 Challenges Solved
-SSH Permission Issues (public key authentication)
-Ansible Dependency Errors & Python conflicts
-Broken Node.js package installations
-Inventory configuration & private IP networking
-CI/CD pipeline conflicts and workflow control
-📈 Outcome
+---
 
-✔ Fully automated CI/CD pipeline
-✔ Multi-server production architecture
-✔ Real-time monitoring with Grafana
-✔ Secure and scalable deployment setup
-✔ Industry-level DevOps workflow implementation
+### Metrics Monitored
 
-🔮 Future Improvements
-MongoDB Integration
-JWT Authentication
-Payment Gateway Integration
-Alerting System (Prometheus Alerts)
-Docker & Kubernetes (EKS)
-🏁 Conclusion
+- CPU Usage  
+- Memory Usage  
+- Disk Usage  
+- Network Traffic  
+- Server Uptime  
 
-This project demonstrates a complete DevOps lifecycle, combining:
+---
 
-Full Stack Development
-AWS Cloud Deployment
-CI/CD Automation
-Monitoring & Observability
-Security Best Practices
+## 🧠 Challenges Solved
+
+- SSH authentication issues  
+- Ansible dependency errors  
+- Broken Node.js packages  
+- CI/CD pipeline conflicts  
+- Server-to-server communication  
+
+---
+
+## 📈 Outcome
+
+- Fully automated CI/CD pipeline  
+- Multi-server production architecture  
+- Real-time monitoring system  
+- Secure deployment setup  
+- Production-level DevOps workflow  
+
+---
+
+## 🔮 Future Improvements
+
+- MongoDB integration  
+- JWT authentication  
+- Payment gateway  
+- Alerting system  
+- Docker & Kubernetes  
+
+---
+
+## 🏁 Conclusion
+
+This project is a complete **Full Stack + DevOps implementation**, combining:
+
+- Application development  
+- Cloud deployment  
+- Automation  
+- Monitoring  
+- Security  
+
+---
+
+⭐ If you like this project, give it a star!
