@@ -1,223 +1,204 @@
-# 🛒 Onix Mall India
+# 🏗️ Onix Mall India – Full Stack DevOps Project
 
-🚀 Full Stack Application with DevOps, Monitoring & CI/CD  
-
-👤 **Piyush Prasad**  
+## 👤 Author  
+**Piyush Prasad**  
 Aspiring Cloud & DevOps Engineer  
 
 ---
 
 ## 📌 Project Overview
 
-Onix Mall India is a full-stack web application that simulates a real-world mall system, combined with a **production-ready DevOps setup**.
+Onix Mall India is a production-style full-stack web application that simulates a real-world mall ecosystem.
 
-This project demonstrates how modern applications are:
-
-- Built (Frontend + Backend)
-- Deployed (AWS EC2)
-- Automated (CI/CD)
-- Monitored (Prometheus + Grafana)
-- Secured (HTTPS + Authentication)
+This project demonstrates real-world DevOps practices including:
+- CI/CD automation
+- Infrastructure deployment
+- Monitoring & observability
+- Security implementation
 
 ---
 
-## 🏗️ Architecture
+## 🌐 Live Links
 
-### Application Flow
+| Service | URL |
+|--------|-----|
+| 🌍 Live Website | https://onixmall.run.place |
+| 🔗 API Endpoint | https://onixmall.run.place/api/malls |
+| 📊 Grafana Dashboard | https://grafana.onixmall.run.place |
 
-Frontend (React)  
-↓  
-Backend API (Node.js)  
-↓  
-Database (MongoDB – Planned)  
-
----
-
-### CI/CD Flow
-
-GitHub  
-↓  
-GitHub Actions  
-↓  
-Ansible Server (EC2)  
-↓  
-Application Server (EC2)  
-↓  
-Nginx  
-
----
-
-### Monitoring Flow
-
-Node Exporter  
-↓  
-Prometheus  
-↓  
-Grafana  
-↓  
-Secure Dashboard  
+🔐 Grafana is protected with authentication & HTTPS
 
 ---
 
 ## ⚙️ Tech Stack
 
-### Frontend
+### 🎨 Frontend
 - React (Vite)
 - TypeScript
 - Tailwind CSS
 
-### Backend
+### ⚙️ Backend
 - Node.js
 - Express.js
 
-### DevOps & Infrastructure
-- AWS EC2 (Ubuntu)
-- Nginx (Reverse Proxy)
-- PM2
-- GitHub Actions
-- Ansible
+### 🗄️ Database
+- MongoDB (hosted on EC2)
 
-### Monitoring
+### ☁️ DevOps & Infrastructure
+- AWS EC2 (Ubuntu)
+- Nginx (Reverse Proxy + HTTPS)
+- PM2 (Process Manager)
+
+### 🔁 CI/CD
+- GitHub Actions
+- Ansible (Automated Deployment)
+- Backup Direct Deployment Pipeline
+
+### 📊 Monitoring
 - Prometheus
 - Node Exporter
 - Grafana
 
 ---
 
-## 🚀 CI/CD Pipelines
+## 🏗️ Architecture
 
-### 🔹 Main Pipeline (Automated)
 
-- Trigger: Push to `main`
-- GitHub Actions → Ansible → EC2 deployment
-- Fully automated deployment system
+GitHub → GitHub Actions → Ansible Server → EC2 → Nginx → Backend → MongoDB
+↓
+Frontend (React Build)
 
----
-
-### 🔹 Backup Pipeline (Manual)
-
-- Trigger: Manual (`workflow_dispatch`)
-- Direct deployment from GitHub to EC2
-- Used as fallback
 
 ---
 
-## 🌐 DNS Configuration (Cloudflare)
+## 🚀 Features
 
-### Domain Setup
-
-| Purpose      | Domain                         |
-|-------------|--------------------------------|
-| Main App    | onixmall.run.place            |
-| Monitoring  | grafana.onixmall.run.place    |
-
----
-
-### DNS Records
-
-| Type   | Name     | Value            | Proxy Status |
-|--------|----------|------------------|--------------|
-| A      | @        | <EC2_PUBLIC_IP>  | Proxied      |
-| CNAME  | www      | onixmall.run.place | Proxied    |
-| A      | grafana  | <EC2_PUBLIC_IP>  | Proxied      |
+- Full-stack mall directory system  
+- API-based dynamic data fetching  
+- Secure backend integration  
+- Production-ready deployment  
+- Real-time monitoring dashboards  
+- CI/CD automation pipelines  
 
 ---
 
-### Notes
+## 🔐 Security Implementation
 
-- Replace `<EC2_PUBLIC_IP>` with your actual AWS EC2 public IP  
-- Proxy should be enabled (Orange Cloud) in Cloudflare  
-- TTL can be set to Auto  
-
----
-
-### SSL Configuration
-
-- Cloudflare SSL Mode: **Full (Strict)**  
-- SSL certificates installed using **Certbot (Let's Encrypt)**  
-
----
-
-## 🔐 Security
-
-- HTTPS (SSL via Certbot)
-- Nginx Reverse Proxy
-- Basic Authentication
-- UFW Firewall
-- SSH Key Authentication
+- HTTPS enabled via Certbot (SSL)  
+- Nginx Reverse Proxy  
+- UFW Firewall (only 22, 80, 443 allowed)  
+- MongoDB restricted to localhost  
+- SSH key-based authentication  
+- API Rate Limiting (Express middleware)  
+- GitHub Security enabled:
+  - Dependabot alerts
+  - Secret scanning
+  - CodeQL analysis  
 
 ---
 
 ## 📊 Monitoring & Observability
 
-🔐 **Protected with authentication & HTTPS**
+- Prometheus collects metrics  
+- Node Exporter exposes system data  
+- Grafana visualizes metrics  
 
-👉 **Main URL:**  
-https://grafana.onixmall.run.place/
-
-👉 **Dashboard (Node Exporter Full):**  
-https://grafana.onixmall.run.place/d/rYdddlPWk/node-exporter-full  
-
-> ⚠️ Access is restricted. Credentials available on request.
-
----
-
-### 📈 Metrics Monitored
-
-- CPU Usage  
-- Memory Usage  
-- Disk Usage  
-- Network Traffic  
-- Server Uptime  
-- System Health  
+### Metrics Monitored:
+- CPU usage  
+- Memory usage  
+- Disk usage  
+- Network traffic  
+- Server uptime  
 
 ---
 
-### 🔄 Monitoring Flow
+## 🔗 API Example
 
-Node Exporter → Prometheus → Grafana → Secure Dashboard  
+### GET /api/malls
 
----
+```json
+[
+  {
+    "_id": "69eb4d26d90bf9c0373632df",
+    "name": "Onix Mall Mumbai",
+    "city": "Mumbai"
+  }
+]
+🌐 DNS Configuration (Cloudflare)
+📌 DNS Records
+Type	Name	Value	Proxy	Purpose
+A	@	EC2_PUBLIC_IP	Yes	Main domain
+A	www	EC2_PUBLIC_IP	Yes	Website
+A	grafana	EC2_PUBLIC_IP	Yes	Monitoring dashboard
+CNAME	api	onixmall.run.place	Yes	API (optional)
+⚙️ Explanation
+@ → Root domain → EC2
+www → Redirect access
+grafana → Monitoring subdomain
+Cloudflare proxy provides:
+SSL
+Security (WAF)
+CDN
+🔐 SSL Setup
+Cloudflare SSL: Full (Strict)
+Nginx: Certbot SSL installed
+🛠️ Setup Guide
+1. Clone Repository
+git clone https://github.com/your-username/onixmall.git
+cd onixmall
+2. Frontend Setup
+npm install
+npm run dev
+3. Backend Setup
+cd backend
+npm install
+node server.js
+4. Production Build
+npm run build
+🔁 CI/CD Pipeline
+🔹 Ansible Pipeline
+Trigger: Push to main branch
+Fully automated deployment
+🔹 Backup Pipeline
+Manual trigger
+Direct EC2 deployment
+⚡ Deployment Flow
+Push code to GitHub
+GitHub Actions triggers pipeline
+Ansible connects to EC2
+Build + deploy app
+Restart services
+Nginx serves updated version
+📁 Project Structure
+onixmall/
+├── src/
+├── backend/
+│   ├── server.js
+│   └── package.json
+├── dist/
+├── .github/workflows/
+🧠 Key Learnings
+AWS EC2 deployment
+Nginx reverse proxy
+CI/CD automation
+Monitoring setup
+Debugging real-world issues
+DevOps security practices
+🔮 Future Improvements
+JWT Authentication
+Admin panel
+Payment integration
+Docker
+Kubernetes
+Alerting system
+🏁 Conclusion
 
-## 🧠 Challenges Solved
+This project demonstrates a real-world DevOps architecture combining:
 
-- SSH authentication issues  
-- Ansible dependency errors  
-- Broken Node.js package installations  
-- DNS and reverse proxy configuration  
-- CI/CD pipeline conflicts  
+Automation
+Monitoring
+Security
+Scalability
+⭐ Support
 
----
-
-## 📈 Outcome
-
-- Fully automated CI/CD pipeline  
-- Multi-server production architecture  
-- Real-time monitoring system  
-- Secure deployment setup  
-- Production-ready DevOps workflow  
-
----
-
-## 🔮 Future Improvements
-
-- MongoDB integration  
-- JWT authentication  
-- Payment gateway  
-- Alerting system  
-- Docker & Kubernetes  
-
----
-
-## 🏁 Conclusion
-
-This project demonstrates a complete **Full Stack + DevOps lifecycle**, including:
-
-- Application development  
-- Cloud deployment  
-- Monitoring & observability  
-- Security best practices  
-
----
-
-⭐ If you like this project, give it a star!
+If you like this project, give it a star ⭐
