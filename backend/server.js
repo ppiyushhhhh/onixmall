@@ -3,11 +3,22 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
+const rateLimit = require("express-rate-limit");
+
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: {
+    message: "Too many requests from this IP, please try again later."
+  }
+});
+
+app.use("/api", apiLimiter);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
