@@ -61,23 +61,23 @@ Secure Dashboard
 
 ## ⚙️ Tech Stack
 
-**Frontend**
+### Frontend
 - React (Vite)
 - TypeScript
 - Tailwind CSS
 
-**Backend**
+### Backend
 - Node.js
 - Express.js
 
-**DevOps & Infrastructure**
+### DevOps & Infrastructure
 - AWS EC2 (Ubuntu)
 - Nginx (Reverse Proxy)
 - PM2
 - GitHub Actions
 - Ansible
 
-**Monitoring**
+### Monitoring
 - Prometheus
 - Node Exporter
 - Grafana
@@ -102,6 +102,42 @@ Secure Dashboard
 
 ---
 
+## 🌐 DNS Configuration (Cloudflare)
+
+### Domain Setup
+
+| Purpose      | Domain                         |
+|-------------|--------------------------------|
+| Main App    | onixmall.run.place            |
+| Monitoring  | grafana.onixmall.run.place    |
+
+---
+
+### DNS Records
+
+| Type   | Name     | Value            | Proxy Status |
+|--------|----------|------------------|--------------|
+| A      | @        | <EC2_PUBLIC_IP>  | Proxied      |
+| CNAME  | www      | onixmall.run.place | Proxied    |
+| A      | grafana  | <EC2_PUBLIC_IP>  | Proxied      |
+
+---
+
+### Notes
+
+- Replace `<EC2_PUBLIC_IP>` with your actual AWS EC2 public IP  
+- Proxy should be enabled (Orange Cloud) in Cloudflare  
+- TTL can be set to Auto  
+
+---
+
+### SSL Configuration
+
+- Cloudflare SSL Mode: **Full (Strict)**  
+- SSL certificates installed using **Certbot (Let's Encrypt)**  
+
+---
+
 ## 🔐 Security
 
 - HTTPS (SSL via Certbot)
@@ -114,23 +150,32 @@ Secure Dashboard
 
 ## 📊 Monitoring & Observability
 
-🔐 Protected with authentication & HTTPS  
+🔐 **Protected with authentication & HTTPS**
 
-**Grafana Dashboard:**  
-👉 https://grafana.onixmall.run.place/  
+👉 **Main URL:**  
+https://grafana.onixmall.run.place/
 
-**Node Exporter Dashboard:**  
-👉 https://grafana.onixmall.run.place/d/rYdddlPWk/node-exporter-full  
+👉 **Dashboard (Node Exporter Full):**  
+https://grafana.onixmall.run.place/d/rYdddlPWk/node-exporter-full  
+
+> ⚠️ Access is restricted. Credentials available on request.
 
 ---
 
-### Metrics Monitored
+### 📈 Metrics Monitored
 
 - CPU Usage  
 - Memory Usage  
 - Disk Usage  
 - Network Traffic  
 - Server Uptime  
+- System Health  
+
+---
+
+### 🔄 Monitoring Flow
+
+Node Exporter → Prometheus → Grafana → Secure Dashboard  
 
 ---
 
@@ -138,9 +183,9 @@ Secure Dashboard
 
 - SSH authentication issues  
 - Ansible dependency errors  
-- Broken Node.js packages  
+- Broken Node.js package installations  
+- DNS and reverse proxy configuration  
 - CI/CD pipeline conflicts  
-- Server-to-server communication  
 
 ---
 
@@ -150,7 +195,7 @@ Secure Dashboard
 - Multi-server production architecture  
 - Real-time monitoring system  
 - Secure deployment setup  
-- Production-level DevOps workflow  
+- Production-ready DevOps workflow  
 
 ---
 
@@ -166,13 +211,12 @@ Secure Dashboard
 
 ## 🏁 Conclusion
 
-This project is a complete **Full Stack + DevOps implementation**, combining:
+This project demonstrates a complete **Full Stack + DevOps lifecycle**, including:
 
 - Application development  
 - Cloud deployment  
-- Automation  
-- Monitoring  
-- Security  
+- Monitoring & observability  
+- Security best practices  
 
 ---
 
