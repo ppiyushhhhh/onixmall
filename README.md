@@ -1,12 +1,12 @@
 # Onix Mall India – Full Stack DevOps Project
 
-## Author
+## Author  
 Piyush Prasad  
 Aspiring Cloud & DevOps Engineer  
 
 ---
 
-## Project Overview
+## Project Overview  
 
 Onix Mall India is a production-style full-stack web application that simulates a real-world mall ecosystem.
 
@@ -18,7 +18,7 @@ This project demonstrates real-world DevOps practices including:
 
 ---
 
-## Live Links
+## Live Links  
 
 | Service | URL |
 |--------|-----|
@@ -26,187 +26,176 @@ This project demonstrates real-world DevOps practices including:
 | API Endpoint | https://onixmall.run.place/api/malls |
 | Grafana Dashboard | https://grafana.onixmall.run.place |
 
-Grafana is protected with authentication and HTTPS.
+Grafana is secured with authentication and HTTPS.
 
 ---
 
-## Tech Stack
+## Tech Stack  
 
-### Frontend
-- React (Vite)  
-- TypeScript  
-- Tailwind CSS  
-
-### Backend
-- Node.js  
-- Express.js  
-
-### Database
-- MongoDB installed on EC2  
-- Connected using Mongoose  
-- Restricted to localhost for security  
-
-### Infrastructure
-- AWS EC2 (Ubuntu)  
-- Nginx (Reverse Proxy with HTTPS)  
-- PM2 (Process Manager)  
-
-### CI/CD
-- GitHub Actions  
-- Ansible (Automated Deployment)  
-- Backup Direct Deployment Pipeline  
-
-### Monitoring
-- Prometheus  
-- Node Exporter  
-- Grafana  
+| Layer | Technology |
+|------|-----------|
+| Frontend | React (Vite), TypeScript, Tailwind CSS |
+| Backend | Node.js, Express.js |
+| Database | MongoDB (EC2 - Localhost) |
+| Infrastructure | AWS EC2 (Ubuntu), Nginx |
+| Process Manager | PM2 |
+| CI/CD | GitHub Actions, Ansible |
+| Monitoring | Prometheus, Node Exporter, Grafana |
 
 ---
 
-## Architecture
+## Architecture  
 
-GitHub  
-→ GitHub Actions  
-→ Ansible Server  
-→ EC2 (Ubuntu)  
-→ Nginx (HTTPS)  
-→ Backend API  
-→ MongoDB  
+GitHub → GitHub Actions → Ansible Server → EC2 → Nginx → Backend API → MongoDB  
+
+The frontend is built using React and served via Nginx.
 
 ---
 
-## Features
+## Features  
 
 - Full-stack mall directory system  
-- API-based dynamic data fetching  
+- API-based data handling  
 - Secure backend integration  
-- Production-ready deployment  
-- Real-time monitoring dashboards  
-- Automated CI/CD pipelines  
+- Automated deployment  
+- Monitoring dashboards  
+- CI/CD pipelines  
 
 ---
 
-## Security Implementation
+## Security Implementation  
 
-- HTTPS enabled using Certbot  
-- Nginx reverse proxy configuration  
-- UFW firewall (only ports 22, 80, 443 allowed)  
-- MongoDB restricted to localhost  
-- SSH key-based authentication  
-- API rate limiting implemented  
-
-GitHub security features enabled:
-- Dependabot alerts  
-- Secret scanning  
-- CodeQL analysis  
+| Area | Implementation |
+|------|--------------|
+| HTTPS | Certbot SSL |
+| Reverse Proxy | Nginx |
+| Firewall | UFW (22, 80, 443 only) |
+| Database Security | MongoDB restricted to localhost |
+| Authentication | SSH key-based |
+| API Protection | Rate limiting |
+| GitHub Security | Dependabot, Secret scanning, CodeQL |
 
 ---
 
-## Monitoring and Observability
+## Monitoring and Observability  
 
-Prometheus collects system metrics, Node Exporter exposes them, and Grafana visualizes the data.
+Prometheus collects metrics, Node Exporter exposes system data, and Grafana visualizes it.
 
 ### Metrics Monitored
-- CPU usage  
-- Memory usage  
-- Disk usage  
-- Network traffic  
-- Server uptime  
+
+| Metric | Description |
+|-------|------------|
+| CPU | Server processing usage |
+| Memory | RAM utilization |
+| Disk | Storage usage |
+| Network | Traffic flow |
+| Uptime | Server availability |
 
 ---
 
-## Database Connection
+## Database Connection  
 
 MongoDB runs locally on the EC2 server and is accessed only by the backend.
 
-### Configuration
+| Component | Configuration |
+|----------|-------------|
+| Host | 127.0.0.1 |
+| Port | 27017 |
+| Database Name | onixmall |
+| Access | Backend only |
 
-MongoDB is bound to localhost:
+The backend connects using environment variables and Mongoose.
 
-```yaml
-bindIp: 127.0.0.1
-Environment Variables
-PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/onixmall
-Mongoose Connection
-const mongoose = require("mongoose");
+---
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch((error) => console.error(error));
-API Example
+## API Example  
 
-GET /api/malls
+Endpoint: `/api/malls`  
 
-[
-  {
-    "_id": "69eb4d26d90bf9c0373632df",
-    "name": "Onix Mall Mumbai",
-    "city": "Mumbai"
-  }
-]
-DNS Configuration
-Type	Name	Value	Proxy	Purpose
-A	@	EC2_PUBLIC_IP	Yes	Main domain
-A	www	EC2_PUBLIC_IP	Yes	Website
-A	grafana	EC2_PUBLIC_IP	Yes	Monitoring
-CNAME	api	onixmall.run.place	Yes	API (optional)
+Returns mall data such as name and city from MongoDB.
+
+---
+
+## DNS Configuration  
+
+| Type | Name | Value | Proxy | Purpose |
+|------|------|------|------|--------|
+| A | @ | EC2_PUBLIC_IP | Yes | Main domain |
+| A | www | EC2_PUBLIC_IP | Yes | Website |
+| A | grafana | EC2_PUBLIC_IP | Yes | Monitoring |
+| CNAME | api | onixmall.run.place | Yes | API (optional) |
 
 SSL Mode: Full (Strict)
 
-Setup Guide
-Clone Repository
-git clone https://github.com/your-username/onixmall.git
-cd onixmall
-Frontend Setup
-npm install
-npm run dev
-Backend Setup
-cd backend
-npm install
-node server.js
-Production Build
-npm run build
-CI/CD Pipeline
+---
 
-Primary Pipeline:
+## Setup Guide  
 
-Triggered on push to main branch
-Deploys using Ansible
+Clone the repository, install dependencies, and run the frontend and backend.
 
-Backup Pipeline:
+Frontend runs using npm, and backend runs using Node.js.
 
-Manual trigger
-Direct EC2 deployment
-Deployment Flow
-Push code to GitHub
-GitHub Actions triggers workflow
-Ansible connects to EC2 via SSH
-Application is built and deployed
-Backend restarts using PM2
-Nginx serves updated application
-Project Structure
-onixmall/
-├── src/
-├── backend/
-│   ├── server.js
-│   └── package.json
-├── dist/
-├── .github/workflows/
-Key Learnings
-AWS EC2 deployment
-Nginx reverse proxy setup
-CI/CD automation using GitHub Actions and Ansible
-Monitoring with Prometheus and Grafana
-Debugging real-world production issues
-Implementing security best practices
-Future Improvements
-JWT authentication
-Admin panel
-Payment integration
-Docker containerization
-Kubernetes deployment
-Alerting system
-Conclusion
+---
 
-This project demonstrates a complete DevOps workflow including deployment, automation, monitoring, and security in a real-world production environment.
+## CI/CD Pipeline  
+
+| Pipeline | Description |
+|---------|------------|
+| Main Pipeline | Auto deploy on push using Ansible |
+| Backup Pipeline | Manual deployment to EC2 |
+
+---
+
+## Deployment Flow  
+
+1. Code pushed to GitHub  
+2. GitHub Actions triggered  
+3. Ansible connects to EC2  
+4. Application is built and deployed  
+5. Backend restarted via PM2  
+6. Nginx serves updated version  
+
+---
+
+## Project Structure  
+
+| Folder | Description |
+|-------|------------|
+| src | Frontend source code |
+| backend | API server |
+| dist | Production build |
+| .github/workflows | CI/CD pipelines |
+
+---
+
+## Key Learnings  
+
+- AWS EC2 deployment  
+- Reverse proxy using Nginx  
+- CI/CD automation  
+- Monitoring setup  
+- Debugging real-world issues  
+- Security best practices  
+
+---
+
+## Future Improvements  
+
+- Authentication system  
+- Admin panel  
+- Payment integration  
+- Docker  
+- Kubernetes  
+- Alerting system  
+
+---
+
+## Conclusion  
+
+This project demonstrates a complete DevOps workflow including deployment, automation, monitoring, and security in a real-world environment.
+
+---
+
+## Support  
+
+If you find this project useful, consider giving it a star.
