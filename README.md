@@ -1,12 +1,12 @@
 # Onix Mall India – Full Stack DevOps Project
 
-## Author  
+## Author
 Piyush Prasad  
 Aspiring Cloud & DevOps Engineer  
 
 ---
 
-## Project Overview  
+## Project Overview
 
 Onix Mall India is a production-style full-stack web application that simulates a real-world mall ecosystem.
 
@@ -18,7 +18,7 @@ This project demonstrates real-world DevOps practices including:
 
 ---
 
-## Live Links  
+## Live Links
 
 | Service | URL |
 |--------|-----|
@@ -26,11 +26,11 @@ This project demonstrates real-world DevOps practices including:
 | API Endpoint | https://onixmall.run.place/api/malls |
 | Grafana Dashboard | https://grafana.onixmall.run.place |
 
-Grafana is secured with authentication and HTTPS.
+Grafana is protected with authentication and HTTPS.
 
 ---
 
-## Tech Stack  
+## Tech Stack
 
 | Layer | Technology |
 |------|-----------|
@@ -44,26 +44,26 @@ Grafana is secured with authentication and HTTPS.
 
 ---
 
-## Architecture  
+## Architecture
 
 GitHub → GitHub Actions → Ansible Server → EC2 → Nginx → Backend API → MongoDB  
 
-The frontend is built using React and served via Nginx.
+The frontend is built using React and served through Nginx.
 
 ---
 
-## Features  
+## Features
 
 - Full-stack mall directory system  
-- API-based data handling  
+- API-based dynamic data fetching  
 - Secure backend integration  
-- Automated deployment  
-- Monitoring dashboards  
-- CI/CD pipelines  
+- Production-ready deployment  
+- Real-time monitoring dashboards  
+- Automated CI/CD pipelines  
 
 ---
 
-## Security Implementation  
+## Security Implementation
 
 | Area | Implementation |
 |------|--------------|
@@ -77,23 +77,23 @@ The frontend is built using React and served via Nginx.
 
 ---
 
-## Monitoring and Observability  
+## Monitoring and Observability
 
-Prometheus collects metrics, Node Exporter exposes system data, and Grafana visualizes it.
+Prometheus collects system metrics, Node Exporter exposes them, and Grafana visualizes the data.
 
 ### Metrics Monitored
 
 | Metric | Description |
 |-------|------------|
-| CPU | Server processing usage |
-| Memory | RAM utilization |
+| CPU | Server usage |
+| Memory | RAM usage |
 | Disk | Storage usage |
 | Network | Traffic flow |
 | Uptime | Server availability |
 
 ---
 
-## Database Connection  
+## Database Connection
 
 MongoDB runs locally on the EC2 server and is accessed only by the backend.
 
@@ -104,19 +104,17 @@ MongoDB runs locally on the EC2 server and is accessed only by the backend.
 | Database Name | onixmall |
 | Access | Backend only |
 
-The backend connects using environment variables and Mongoose.
+---
+
+## API Example
+
+Endpoint: /api/malls  
+
+Returns mall data such as name and city.
 
 ---
 
-## API Example  
-
-Endpoint: `/api/malls`  
-
-Returns mall data such as name and city from MongoDB.
-
----
-
-## DNS Configuration  
+## DNS Configuration
 
 | Type | Name | Value | Proxy | Purpose |
 |------|------|------|------|--------|
@@ -129,15 +127,25 @@ SSL Mode: Full (Strict)
 
 ---
 
-## Setup Guide  
+## Setup Guide
 
-Clone the repository, install dependencies, and run the frontend and backend.
+Clone the repository and install dependencies.
 
-Frontend runs using npm, and backend runs using Node.js.
+Frontend:
+- npm install  
+- npm run dev  
+
+Backend:
+- cd backend  
+- npm install  
+- node server.js  
+
+Production build:
+- npm run build  
 
 ---
 
-## CI/CD Pipeline  
+## CI/CD Pipeline
 
 | Pipeline | Description |
 |---------|------------|
@@ -146,18 +154,36 @@ Frontend runs using npm, and backend runs using Node.js.
 
 ---
 
-## Deployment Flow  
+## Branching Strategy
 
-1. Code pushed to GitHub  
-2. GitHub Actions triggered  
-3. Ansible connects to EC2  
-4. Application is built and deployed  
-5. Backend restarted via PM2  
-6. Nginx serves updated version  
+This project follows a simple branching strategy for safe deployments.
+
+| Branch | Purpose |
+|-------|--------|
+| main | Production-ready code with auto deployment |
+| testing | Used for testing new features before production |
+
+### Workflow
+
+- Changes are first pushed to the testing branch  
+- Features are tested without affecting the live system  
+- After verification, code is merged into main  
+- Main branch triggers CI/CD and deploys to production  
 
 ---
 
-## Project Structure  
+## Deployment Flow
+
+1. Code is pushed to GitHub  
+2. GitHub Actions triggers workflow  
+3. Ansible connects to EC2  
+4. Application is built and deployed  
+5. Backend restarts using PM2  
+6. Nginx serves updated application  
+
+---
+
+## Project Structure
 
 | Folder | Description |
 |-------|------------|
@@ -168,7 +194,7 @@ Frontend runs using npm, and backend runs using Node.js.
 
 ---
 
-## Key Learnings  
+## Key Learnings
 
 - AWS EC2 deployment  
 - Reverse proxy using Nginx  
@@ -179,7 +205,7 @@ Frontend runs using npm, and backend runs using Node.js.
 
 ---
 
-## Future Improvements  
+## Future Improvements
 
 - Authentication system  
 - Admin panel  
@@ -190,12 +216,12 @@ Frontend runs using npm, and backend runs using Node.js.
 
 ---
 
-## Conclusion  
+## Conclusion
 
 This project demonstrates a complete DevOps workflow including deployment, automation, monitoring, and security in a real-world environment.
 
 ---
 
-## Support  
+## Support
 
 If you find this project useful, consider giving it a star.
