@@ -1,4 +1,4 @@
-# Onix Mall India – Full Stack DevOps Project
+k# Onix Mall India – Full Stack DevOps Project
 
 ## Author
 Piyush Prasad  
@@ -49,6 +49,25 @@ Grafana is protected with authentication and HTTPS.
 GitHub → GitHub Actions → Ansible Server → EC2 → Nginx → Backend API → MongoDB  
 
 The frontend is built using React and served through Nginx.
+
+---
+
+## Infrastructure (AWS EC2 Instances)
+
+This project uses a multi-server setup for production-style deployment.
+
+| Instance Name | Purpose | Instance ID | Type | Availability Zone | Public IP | Public DNS | OS |
+|--------------|--------|------------|------|------------------|----------|------------|----|
+| Ansible Server | CI/CD control node | i-05a68dac6f2725b20 | m7i-flex.large | ap-south-1c | 35.154.168.44 | ec2-35-154-168-44.ap-south-1.compute.amazonaws.com | Ubuntu Pro |
+| Application Server | Hosts frontend, backend, MongoDB | i-0b10756dbcbbc795c | m7i-flex.large | ap-south-1a | 65.0.158.227 | ec2-65-0-158-227.ap-south-1.compute.amazonaws.com | Linux/UNIX |
+
+### Architecture Usage
+
+- Ansible Server handles deployment automation  
+- Application Server runs:
+  - React frontend (via Nginx)  
+  - Node.js backend (PM2)  
+  - MongoDB (localhost)  
 
 ---
 
@@ -129,8 +148,6 @@ SSL Mode: Full (Strict)
 
 ## Setup Guide
 
-Clone the repository and install dependencies.
-
 Frontend:
 - npm install  
 - npm run dev  
@@ -140,7 +157,7 @@ Backend:
 - npm install  
 - node server.js  
 
-Production build:
+Production:
 - npm run build  
 
 ---
@@ -156,30 +173,28 @@ Production build:
 
 ## Branching Strategy
 
-This project follows a simple branching strategy for safe deployments.
-
 | Branch | Purpose |
 |-------|--------|
 | main | Production-ready code with auto deployment |
-| testing | Used for testing new features before production |
+| testing | Used for testing before production |
 
 ### Workflow
 
-- Changes are first pushed to the testing branch  
-- Features are tested without affecting the live system  
-- After verification, code is merged into main  
-- Main branch triggers CI/CD and deploys to production  
+- Changes are pushed to testing branch  
+- Features are validated safely  
+- Code is merged into main  
+- Main triggers deployment  
 
 ---
 
 ## Deployment Flow
 
-1. Code is pushed to GitHub  
-2. GitHub Actions triggers workflow  
+1. Code pushed to GitHub  
+2. GitHub Actions triggered  
 3. Ansible connects to EC2  
-4. Application is built and deployed  
-5. Backend restarts using PM2  
-6. Nginx serves updated application  
+4. Application deployed  
+5. Backend restarted using PM2  
+6. Nginx serves updated version  
 
 ---
 
@@ -200,7 +215,7 @@ This project follows a simple branching strategy for safe deployments.
 - Reverse proxy using Nginx  
 - CI/CD automation  
 - Monitoring setup  
-- Debugging real-world issues  
+- Debugging production issues  
 - Security best practices  
 
 ---
