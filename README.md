@@ -1,158 +1,295 @@
 Onix Mall India – Full Stack DevOps Project
-Author
 
+Author
 Piyush Prasad
 Aspiring Cloud & DevOps Engineer
 
-Project Overview
+Overview
+Onix Mall India is a production-style full-stack web application deployed on AWS EC2.
+The project demonstrates how modern DevOps practices are applied in a real-world environment, covering deployment, automation, monitoring, security, and reporting.
+Key focus areas:
 
-Onix Mall India is a production-style full-stack web application that simulates a real-world mall ecosystem.
-
-This project demonstrates real-world DevOps practices including:
 
 CI/CD automation
-Infrastructure deployment
+
+
+Infrastructure deployment on AWS
+
+
 Monitoring and observability
-Security implementation
+
+
+Security best practices
+
+
 Automated reporting system
-Live Links
-Service	URL
-Website	https://onixmall.run.place
 
-API Endpoint	https://onixmall.run.place/api/malls
 
-Grafana Dashboard	https://grafana.onixmall.run.place
-Tech Stack
-Layer	Technology
-Frontend	React (Vite), TypeScript, Tailwind CSS
-Backend	Node.js, Express.js
-Database	MongoDB (EC2 - Localhost)
-Infrastructure	AWS EC2 (Ubuntu), Nginx
-Process Manager	PM2
-CI/CD	GitHub Actions, Ansible
-Monitoring	Prometheus, Node Exporter, Grafana
-Reporting	Bash, Cron, wkhtmltopdf, Mutt, jq
+
+Live Services
+ServiceURLWebsitehttps://onixmall.run.placeAPI Endpointhttps://onixmall.run.place/api/mallsGrafana Dashboardhttps://grafana.onixmall.run.place
+
+Technology Stack
+LayerTechnologyFrontendReact (Vite), TypeScript, Tailwind CSSBackendNode.js, Express.jsDatabaseMongoDB (Localhost on EC2)InfrastructureAWS EC2 (Ubuntu), NginxProcess ManagerPM2CI/CDGitHub Actions, AnsibleMonitoringPrometheus, Node Exporter, GrafanaReportingBash, Cron, wkhtmltopdf, Mutt, jq
+
 Architecture
-
+The system follows a CI/CD-driven deployment pipeline:
 GitHub → GitHub Actions → Ansible Server → EC2 → Nginx → Backend API → MongoDB
 
-Infrastructure (AWS EC2 Instances)
-Instance Name	Purpose	Instance ID	Availability Zone	Public IP
-Ansible Server	CI/CD control node	i-05a68dac6f2725b20	ap-south-1c	35.154.168.44
-Application Server	Hosts frontend, backend, MongoDB	i-0b10756dbcbbc795c	ap-south-1a	65.0.158.227
-Features
-Full-stack mall directory system
-API-based dynamic data fetching
-Production-ready deployment
-Real-time monitoring dashboards
-Automated CI/CD pipelines
-Infrastructure security implementation
-Automated PDF reporting system
-Security Implementation
-Area	Implementation
-HTTPS	Certbot SSL
-Reverse Proxy	Nginx
-Firewall	UFW (22, 80, 443 only)
-Database Security	MongoDB restricted to localhost
-Authentication	SSH key-based
-API Protection	Rate limiting
-GitHub Security	Dependabot, Secret scanning, CodeQL
-Monitoring and Observability
 
-Prometheus collects system metrics, Node Exporter exposes them, and Grafana visualizes the data.
+Frontend is served via Nginx
+
+
+Backend runs using PM2
+
+
+MongoDB is restricted to localhost for security
+
+
+
+Infrastructure Setup
+The project uses a multi-server architecture to simulate a production environment.
+ServerPurposeAvailability ZonePublic IPAnsible ServerCI/CD control nodeap-south-1c35.154.168.44Application ServerHosts frontend, backend, databaseap-south-1a65.0.158.227
+
+Key Features
+
+
+Full-stack application deployed on AWS
+
+
+Automated CI/CD pipeline
+
+
+Secure backend and database configuration
+
+
+Real-time monitoring dashboards
+
+
+Automated PDF reporting system
+
+
+
+Security Implementation
+Security is implemented at multiple layers:
+
+
+HTTPS enabled using Certbot
+
+
+Nginx reverse proxy configuration
+
+
+UFW firewall with restricted ports
+
+
+MongoDB bound to localhost
+
+
+SSH key-based authentication
+
+
+API rate limiting
+
+
+GitHub security features (Dependabot, CodeQL)
+
+
+
+Monitoring and Observability
+Monitoring is implemented using industry-standard tools:
+
+
+Prometheus – collects metrics
+
+
+Node Exporter – exposes system data
+
+
+Grafana – visualizes data through dashboards
+
 
 Metrics Monitored
-Metric	Description
-CPU	Server usage
-Memory	RAM usage
-Disk	Storage usage
-Network	Traffic flow
-Uptime	Server availability
-Database Configuration
-Component	Configuration
-Host	127.0.0.1
-Port	27017
-Database Name	onixmall
-Access	Backend only
-API Example
 
-Endpoint: /api/malls
+
+CPU usage
+
+
+Memory usage
+
+
+Disk usage
+
+
+Network traffic
+
+
+Server uptime
+
+
+
+CI/CD Pipeline
+PipelineDescriptionMain PipelineAuto deploy on push to main branchBackup PipelineManual deployment fallback
+Deployment Flow
+
+
+Code is pushed to GitHub
+
+
+GitHub Actions workflow is triggered
+
+
+Ansible connects to the EC2 instance
+
+
+Application is deployed
+
+
+Backend restarts using PM2
+
+
+Nginx serves the updated version
+
+
+
+Branching Strategy
+BranchPurposemainProduction deploymenttestingSafe testing before production
+Workflow:
+testing → validate → merge → main → deploy
+
+Project Structure
+FolderDescriptionsrcFrontend source codebackendAPI serverdistProduction buildscriptsDevOps automation scripts.github/workflowsCI/CD pipelines
+
+Automated Reporting System
+The project includes a corporate-style automated reporting system that generates PDF reports and sends them via email.
+Functionality
+
+
+Collects real-time server metrics
+
+
+Checks application and API health
+
+
+Monitors services (Nginx, MongoDB, PM2)
+
+
+Generates structured PDF reports
+
+
+Sends reports to multiple recipients
+
+
+
+Schedule
+TimeReport08:00 AMMorning infrastructure report07:00 PMEvening infrastructure report
+
+Report Includes
+
+
+Server health (CPU, Memory, Disk)
+
+
+Application status
+
+
+Service health
+
+
+SSL certificate expiry
+
+
+Infrastructure overview
+
+
+Security logs (failed SSH attempts)
+
+
+PM2 process monitoring
+
+
+
+Manual Execution
+bash scripts/daily-report.sh
+
+Cron Configuration
+0 8,19 * * * /bin/bash /home/ubuntu/daily-report.sh >> /home/ubuntu/report.log 2>&1
+
+Database Configuration
+ComponentValueHost127.0.0.1Port27017Databaseonixmall
+
+API Example
+GET /api/malls
 Returns mall data such as name and city.
 
 DNS Configuration
-Type	Name	Value	Purpose
-A	@	EC2 Public IP	Main domain
-A	www	EC2 Public IP	Website
-A	grafana	EC2 Public IP	Monitoring
-CNAME	api	onixmall.run.place	API
-
+TypeNamePurposeA@Main domainAwwwWebsiteAgrafanaMonitoringCNAMEapiAPI routing
 SSL Mode: Full (Strict)
 
-CI/CD Pipeline
-Pipeline	Description
-Main Pipeline	Auto deploy on push using Ansible
-Backup Pipeline	Manual deployment to EC2
-Branching Strategy
-Branch	Purpose
-main	Production deployment
-testing	Safe testing
-Deployment Flow
-Code pushed to GitHub
-GitHub Actions triggered
-Ansible connects to EC2
-Application deployed
-Backend restarted using PM2
-Nginx serves updated version
-Project Structure
-Folder	Description
-src	Frontend source code
-backend	API server
-dist	Production build
-scripts	DevOps automation scripts
-.github/workflows	CI/CD pipelines
-Automated Reporting System
-
-A corporate-style system that generates PDF reports and sends them via email automatically.
-
-Schedule
-Time	Report
-8:00 AM	Morning Report
-7:00 PM	Evening Report
-Report Includes
-Server health (CPU, Memory, Disk)
-Application status (Frontend & API)
-Service health (Nginx, MongoDB, PM2)
-SSL certificate expiry
-Infrastructure overview
-Security logs
-PM2 process monitoring
-Manual Execution
-
-bash scripts/daily-report.sh
-
-Cron Job
-
-0 8,19 * * * /bin/bash /home/ubuntu/daily-report.sh >> /home/ubuntu/report.log 2>&1
-
 Key Learnings
-AWS EC2 deployment
-Nginx reverse proxy configuration
-CI/CD automation
-Monitoring and observability setup
-Production debugging
-Security best practices
-Automated reporting system
-Future Improvements
-Authentication system
-Admin panel
-Payment integration
-Docker
-Kubernetes
-Alerting system
-Conclusion
 
-This project demonstrates a complete DevOps workflow including deployment, automation, monitoring, security, and reporting in a real-world environment.
+
+AWS EC2 deployment
+
+
+Nginx reverse proxy configuration
+
+
+CI/CD automation using GitHub Actions and Ansible
+
+
+Monitoring with Prometheus and Grafana
+
+
+Security best practices
+
+
+Automation using cron jobs
+
+
+Real-world debugging and issue handling
+
+
+
+Future Improvements
+
+
+Authentication system
+
+
+Admin dashboard
+
+
+Payment integration
+
+
+Docker and Kubernetes
+
+
+Alerting system
+
+
+
+Conclusion
+This project demonstrates a complete DevOps workflow including:
+Deployment → Automation → Monitoring → Security → Reporting
 
 Support
-
 If you find this project useful, consider giving it a star ⭐
+
+After adding README
+git add README.mdgit commit -m "Added professional README"git push origin testing
+
+If you want next level upgrade (recommended for recruiters):
+
+
+Add architecture diagram image
+
+
+Add Grafana + PDF screenshots
+
+
+Add badges (CI/CD, uptime)
+
+
+Just tell me 👍
