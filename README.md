@@ -1,227 +1,179 @@
 # 🏢 Onix Mall India  
-### Full Stack DevOps Infrastructure Project  
+### Production-Grade Full Stack DevOps Platform
 
-> A production-grade full stack application demonstrating real-world DevOps practices including CI/CD, monitoring, security, and automated reporting.
+> A production-style application showcasing end-to-end DevOps practices: CI/CD automation, secure infrastructure, observability, and automated reporting.
 
 ---
 
-## 👨‍💻 Author
+## 👤 Author
 **Piyush Prasad**  
-Aspiring Cloud & DevOps Engineer  
+Cloud & DevOps Engineer (Aspiring)
 
 ---
 
-## 📌 Overview
+## 📌 Executive Summary
 
-Onix Mall India is a **production-style full stack web application** designed to simulate a real-world mall ecosystem.
+Onix Mall India is a **full stack web application deployed on AWS EC2** that demonstrates **real-world DevOps workflows**:
 
-This project focuses on implementing **end-to-end DevOps practices**, covering:
-
-- Infrastructure provisioning  
-- CI/CD automation  
-- Monitoring and observability  
-- Security hardening  
-- Automated reporting  
+- Automated CI/CD using GitHub Actions + Ansible  
+- Hardened infrastructure with Nginx, UFW, and SSL  
+- Full observability via Prometheus, Node Exporter, Grafana  
+- **Automated, corporate-style PDF reporting via cron + email**  
 
 ---
 
-## 🌐 Live Services
+## 🌐 Live Endpoints
 
 | Service | URL |
-|--------|-----|
-| 🌍 Website | https://onixmall.run.place |
-| 🔌 API | https://onixmall.run.place/api/malls |
-| 📊 Monitoring (Grafana) | https://grafana.onixmall.run.place |
+|---|---|
+| Website | https://onixmall.run.place |
+| API | https://onixmall.run.place/api/malls |
+| Grafana | https://grafana.onixmall.run.place |
 
 > Grafana is secured with authentication and HTTPS.
 
 ---
 
-## ⚙️ Technology Stack
+## 🧰 Technology Stack
 
-| Layer | Technology |
-|------|-----------|
+| Layer | Tools / Frameworks |
+|---|---|
 | Frontend | React (Vite), TypeScript, Tailwind CSS |
 | Backend | Node.js, Express.js |
-| Database | MongoDB (Localhost on EC2) |
-| Infrastructure | AWS EC2 (Ubuntu), Nginx |
+| Database | MongoDB (localhost on EC2) |
+| Web Server | Nginx (reverse proxy + static hosting) |
 | Process Manager | PM2 |
 | CI/CD | GitHub Actions, Ansible |
 | Monitoring | Prometheus, Node Exporter, Grafana |
+| Reporting | Bash, Cron, wkhtmltopdf, Mutt, jq |
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ System Architecture
 
+```text
+GitHub
+  ↓
+GitHub Actions (CI/CD)
+  ↓
+Ansible (Control Node)
+  ↓
+Application Server (EC2)
+  ├─ Nginx (Reverse Proxy)
+  ├─ React Frontend
+  ├─ Node.js Backend (PM2)
+  └─ MongoDB (Localhost)
+🖥️ Infrastructure
+Component	Purpose	Instance ID	AZ	Public IP
+Ansible Server	CI/CD control node	i-05a68dac6f2725b20	ap-south-1c	35.154.168.44
+Application Server	Hosts full stack app	i-0b10756dbcbbc795c	ap-south-1a	65.0.158.227
+🚀 Core Capabilities
+End-to-end CI/CD automation
+Production-grade Nginx reverse proxy
+Secure backend with PM2 + MongoDB (localhost only)
+Real-time monitoring dashboards (Grafana)
+Automated PDF reporting with email delivery
+Structured branching strategy (testing → main)
+🔐 Security Posture
+Domain	Controls
+Transport	HTTPS via Certbot
+Network	UFW (22, 80, 443 only)
+Database	MongoDB bound to 127.0.0.1
+Access	SSH key-based
+API	Rate limiting
+Code	Dependabot, Secret Scanning, CodeQL
+📊 Observability
 
-GitHub → GitHub Actions → Ansible → EC2 → Nginx → Backend API → MongoDB
+Prometheus → Node Exporter → Grafana
 
+Metrics Covered
 
-- Frontend served via **Nginx**
-- Backend managed using **PM2**
-- MongoDB runs locally for enhanced security
+CPU utilization
+Memory usage
+Disk consumption
+Network throughput
+System uptime
+🔄 CI/CD
+Pipeline	Behavior
+Main	Auto-deploy on push to main
+Backup	Manual fallback deploy
 
----
+Flow
 
-## 🖥️ Infrastructure Setup
+Push to testing
+Validate changes
+Merge to main
+GitHub Actions triggers Ansible
+Deploy → Restart (PM2) → Serve (Nginx)
+📦 Repository Structure
+Path	Description
+src/	Frontend source
+backend/	Express API
+dist/	Production build
+scripts/	DevOps automation
+.github/workflows/	CI/CD pipelines
+📄 Automated Reporting System
 
-| Instance | Purpose | Instance ID | Availability Zone | Public IP |
-|---------|--------|------------|------------------|----------|
-| Ansible Server | CI/CD Control Node | i-05a68dac6f2725b20 | ap-south-1c | 35.154.168.44 |
-| Application Server | Full Application Hosting | i-0b10756dbcbbc795c | ap-south-1a | 65.0.158.227 |
+A corporate-grade reporting pipeline that generates and emails PDF infrastructure reports.
 
----
-
-## 🚀 Key Features
-
-- Full-stack application deployment  
-- Automated CI/CD pipelines  
-- Secure backend architecture  
-- Real-time monitoring dashboards  
-- Infrastructure-level security  
-- Automated reporting system  
-
----
-
-## 🔐 Security Implementation
-
-| Area | Implementation |
-|-----|--------------|
-| HTTPS | Certbot SSL |
-| Reverse Proxy | Nginx |
-| Firewall | UFW (Ports 22, 80, 443) |
-| Database | MongoDB restricted to localhost |
-| Authentication | SSH key-based |
-| API Protection | Rate limiting |
-| Code Security | Dependabot, CodeQL, Secret scanning |
-
----
-
-## 📊 Monitoring & Observability
-
-- **Prometheus** → Metrics collection  
-- **Node Exporter** → System-level data  
-- **Grafana** → Visualization dashboards  
-
-### Metrics Tracked
-- CPU usage  
-- Memory usage  
-- Disk usage  
-- Network traffic  
-- Server uptime  
-
----
-
-## 🔄 CI/CD Pipeline
-
-| Pipeline | Description |
-|---------|------------|
-| Main Pipeline | Automated deployment on push |
-| Backup Pipeline | Manual fallback deployment |
-
-### Workflow
-
-1. Code pushed to `testing` branch  
-2. Changes validated  
-3. Merged into `main`  
-4. Deployment triggered automatically  
-
----
-
-## 📦 Project Structure
-
-| Folder | Description |
-|-------|------------|
-| `src/` | Frontend source code |
-| `backend/` | API server |
-| `dist/` | Production build |
-| `scripts/` | DevOps automation scripts |
-| `.github/workflows/` | CI/CD pipelines |
-
----
-
-# 🔄 Automated Reporting System
-
-A **corporate-style infrastructure reporting system** that generates PDF reports and sends them via email automatically.
-
----
-
-## 📊 Capabilities
-
-- Automated PDF report generation  
-- Email delivery with multiple recipients  
-- Scheduled execution using cron  
-- Real-time infrastructure insights  
-- Professional corporate layout  
-
----
-
-## ⏰ Scheduling
-
-| Time | Report |
-|------|--------|
-| 08:00 AM | Morning Infrastructure Report |
-| 07:00 PM | Evening Infrastructure Report |
-
----
-
-## 📄 Report Includes
-
-- Server health (CPU, Memory, Disk)  
-- Application status (Frontend & API)  
-- Service health (Nginx, MongoDB, PM2)  
-- SSL certificate expiry  
-- Infrastructure overview  
-- Security logs  
-- Process monitoring  
-
----
-
-## 🛠️ Tools Used
-
-| Tool | Purpose |
-|------|--------|
-| Bash | Automation scripting |
-| wkhtmltopdf | HTML → PDF conversion |
-| Mutt | Email delivery |
-| Cron | Scheduling |
-| jq | JSON parsing (PM2 formatting) |
-
----
-
-## ▶️ Manual Execution
-
-```bash
+✨ Highlights
+PDF reports with structured sections
+Multiple recipients
+Timestamped subjects (no email threading)
+Runs via cron (no manual intervention)
+⏰ Schedule
+Time	Report
+08:00 AM	Morning Health Report
+07:00 PM	Evening Health Report
+📑 Report Contents
+Section	Details
+Communication	From, To, Subject
+Executive Summary	App/API/Nginx/Mongo status
+Infrastructure	App + Ansible server
+Server Health	CPU, Memory, Disk, Uptime
+URLs	Website, API, Grafana
+SSL	Certificate expiry
+PM2	Process metrics (CPU, RAM, restarts)
+Security	Failed SSH attempts
+▶️ Manual Execution
 bash scripts/daily-report.sh
-📬 Output
-PDF report as email attachment
-Clean, structured format
-Separate email threads (timestamp-based)
-Multi-recipient support
-📚 Key Learnings
-AWS EC2 infrastructure deployment
-Reverse proxy configuration (Nginx)
-CI/CD automation pipelines
-Monitoring and observability setup
-Production debugging techniques
-Security best practices
-Automated reporting systems
-🔮 Future Enhancements
-Authentication system
+🕒 Cron Configuration
+0 8,19 * * * /bin/bash /home/ubuntu/daily-report.sh >> /home/ubuntu/report.log 2>&1
+🗄️ Database
+Field	Value
+Host	127.0.0.1
+Port	27017
+DB	onixmall
+Access	Backend only
+🔌 API Example
+GET /api/malls
+🌍 DNS
+Type	Name	Purpose
+A	@	Main domain
+A	www	Website
+A	grafana	Monitoring
+CNAME	api	Optional API route
+
+SSL Mode: Full (Strict)
+
+🧠 Key Learnings
+Production EC2 deployments
+Nginx reverse proxy patterns
+CI/CD with GitHub Actions + Ansible
+PM2 process lifecycle management
+Monitoring stack implementation
+Cron-based automation
+PDF report generation pipelines
+Secure system design
+🔮 Roadmap
+Auth system
 Admin dashboard
-Payment integration
-Containerization (Docker)
-Orchestration (Kubernetes)
-Alerting system
+Payments integration
+Docker & Kubernetes
+Alerting (Slack/Email)
+Report archival (S3)
 📝 Conclusion
 
-This project demonstrates a complete DevOps lifecycle, combining:
+This project represents a complete DevOps lifecycle:
 
-Deployment
-Automation
-Monitoring
-Security
-Reporting
-⭐ Support
-
-If you find this project useful, consider giving it a star ⭐
+Build → Deploy → Secure → Monitor → Report
