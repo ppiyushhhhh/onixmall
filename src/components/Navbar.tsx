@@ -11,6 +11,7 @@ const navLinks = [
   { label: 'Leasing', path: '/leasing' },
   { label: 'Careers', path: '/careers' },
   { label: 'Reports', path: '/annual-reports' },
+  { label: 'Board', path: '/board' },
   { label: 'Contact', path: '/contact' },
 ];
 
