@@ -8,6 +8,7 @@ import { malls, events } from '@/data/malls';
 import heroImg1 from '@/assets/hero-mall-1.jpg';
 import heroImg2 from '@/assets/hero-mall-2.jpg';
 import heroImg3 from '@/assets/hero-mall-3.jpg';
+import { mallHeroImages } from '@/components/MallHeroImages';
 
 const heroSlides = [
   { image: heroImg1, mall: 'Onix Mall Mumbai', tagline: 'Where Mumbai Shops in Style', city: 'Mumbai' },
@@ -177,10 +178,14 @@ const HomePage = () => {
               >
                 <Link to={`/malls/${mall.id}`} className="block group bg-card rounded-lg border border-border overflow-hidden hover:border-primary/30 transition-all hover:shadow-gold">
                   <div className="h-48 bg-secondary relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-gold opacity-10 group-hover:opacity-20 transition-opacity" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Building2 size={48} className="text-primary/40" />
-                    </div>
+                    {mallHeroImages[mall.id] ? (
+                      <img src={mallHeroImages[mall.id]} alt={mall.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Building2 size={48} className="text-primary/40" />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent pointer-events-none" />
                     <div className="absolute top-3 right-3 bg-background/80 backdrop-blur-sm rounded-full px-2.5 py-1 text-xs flex items-center gap-1">
                       <Star size={12} className="text-primary fill-primary" />
                       {mall.rating}
