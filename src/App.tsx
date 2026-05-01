@@ -16,6 +16,7 @@ import TermsPage from "./pages/TermsPage";
 import LeasingPage from "./pages/LeasingPage";
 import AnnualReportsPage from "./pages/AnnualReportsPage";
 import CareersPage from "./pages/CareersPage";
+import BoardPage from "./pages/BoardPage";
 import AdminPanel from "./pages/AdminPanel";
 import NotFound from "./pages/NotFound";
 
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/leasing" element={<LeasingPage />} />
           <Route path="/annual-reports" element={<AnnualReportsPage />} />
           <Route path="/careers" element={<CareersPage />} />
+          <Route path="/board" element={<BoardPage />} />
           <Route path="/admin" element={<AdminPanel />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
