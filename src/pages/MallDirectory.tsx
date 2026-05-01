@@ -1,13 +1,5 @@
 import { useEffect, useState } from "react";
 
-interface Mall {
-  id: string;
-  name: string;
-  city: string;
-}
-
-import { useEffect, useState } from "react";
-
 type Mall = {
   _id: string;
   name: string;
