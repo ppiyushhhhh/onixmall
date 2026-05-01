@@ -45,9 +45,6 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
-          <Link to="/admin" className="text-sm font-medium bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 transition-colors">
-            Admin
-          </Link>
         </div>
 
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-foreground p-2">
@@ -73,9 +70,6 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
-              <Link to="/admin" className="text-sm font-medium bg-primary text-primary-foreground px-4 py-2 rounded-md text-center">
-                Admin
-              </Link>
             </div>
           </motion.div>
         )}
