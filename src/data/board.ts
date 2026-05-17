@@ -1,6 +1,6 @@
 import piyush from '@/assets/board/piyush-prasad.jpg';
 import arpita from '@/assets/board/arpita-prasad.jpg';
-import rahul from '@/assets/board/rahul-mehta.jpg';
+import prathamesh from '@/assets/board/prathamesh-prasad.png';
 import sneha from '@/assets/board/sneha-iyer.jpg';
 import vikram from '@/assets/board/vikram-shah.jpg';
 import ananya from '@/assets/board/ananya-rao.jpg';
@@ -31,11 +31,11 @@ export const boardMembers: BoardMember[] = [
     image: arpita,
   },
   {
-    id: 'rahul-mehta',
-    name: 'Rahul Mehta',
-    role: 'Chief Technology Officer (CTO)',
-    description: 'Drives digital infrastructure, smart-mall systems, and engineering excellence.',
-    image: rahul,
+    id: 'prathamesh-prasad',
+    name: 'Prathamesh Prasad',
+    role: 'Chief Financial Officer (CFO)',
+    description: 'Oversees financial planning, budgeting, and risk management across the group.',
+    image: prathamesh,
   },
   {
     id: 'sneha-iyer',
