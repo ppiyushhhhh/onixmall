@@ -26,8 +26,8 @@ export const boardMembers: BoardMember[] = [
   {
     id: 'arpita-prasad',
     name: 'Arpita Prasad',
-    role: 'Chief Financial Officer (CFO)',
-    description: 'Oversees financial planning, budgeting, and risk management.',
+    role: 'Chief Technology Officer (CTO)',
+    description: 'Drives digital infrastructure, smart-mall systems, and engineering excellence.',
     image: arpita,
   },
   {
