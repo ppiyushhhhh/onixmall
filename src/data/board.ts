@@ -1,7 +1,7 @@
 import piyush from '@/assets/board/piyush-prasad.jpg';
 import arpita from '@/assets/board/arpita-prasad.jpg';
 import prathamesh from '@/assets/board/prathamesh-prasad.png';
-import sneha from '@/assets/board/sneha-iyer.jpg';
+import heeba from '@/assets/board/heeba-khan.png';
 import vikram from '@/assets/board/vikram-shah.jpg';
 import ananya from '@/assets/board/ananya-rao.jpg';
 import rajesh from '@/assets/board/rajesh-malhotra.jpg';
@@ -38,11 +38,11 @@ export const boardMembers: BoardMember[] = [
     image: prathamesh,
   },
   {
-    id: 'sneha-iyer',
-    name: 'Sneha Iyer',
+    id: 'heeba-khan',
+    name: 'Heeba Khan',
     role: 'Chief Operating Officer (COO)',
     description: 'Ensures seamless mall operations, tenant relations, and visitor experience.',
-    image: sneha,
+    image: heeba,
   },
   {
     id: 'vikram-shah',
